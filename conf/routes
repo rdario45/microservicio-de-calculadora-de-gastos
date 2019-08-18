@@ -1,0 +1,10 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET           /gastos            controllers.GastoController.index
+GET           /gastos/:id        controllers.GastoController.find(id: Integer)
+POST          /gastos            controllers.GastoController.save
+PATCH         /gastos            controllers.GastoController.update
+DELETE        /gastos/:id        controllers.GastoController.delete(id: Integer)
