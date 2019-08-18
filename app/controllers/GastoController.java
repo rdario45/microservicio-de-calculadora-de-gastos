@@ -43,7 +43,7 @@ public class GastoController {
   public Result save() {
     JsonNode json = request().body().asJson();
     Logger.info("POST /save body:" + json.toString());
-    return getGastoDTO(json)
+    return getGastoDTO(json.get("body"))
       .flatMap(GastoValidator::validate)
       .mapLeft(this::getValidationErrorMessage)
       .mapLeft(Results::badRequest)
@@ -57,7 +57,7 @@ public class GastoController {
   public Result update(){
     JsonNode json = request().body().asJson();
     Logger.info("PATCH /update body:" + json.toString());
-    return getGastoDTO(json)
+    return getGastoDTO(json.get("body"))
       .flatMap(GastoValidator::validate)
       .mapLeft(this::getValidationErrorMessage)
       .mapLeft(Results::badRequest).map(gasto -> repository.update(gasto))
